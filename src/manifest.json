@@ -3,7 +3,7 @@
   "name": "AI Usage Strip",
   "short_name": "Usage Strip",
   "version": "1.0.0",
-  "description": "Plan limit, reset timer, context fill and message count right above the chat box on Claude, ChatGPT, Gemini, Perplexity, Grok and DeepSeek.",
+  "description": "See your AI chat limit, reset time, context size and messages sent, right above the chat box on Claude, ChatGPT, Gemini and more.",
   "author": "Ramachokkalingam",
   "homepage_url": "https://github.com/Ramachokkalingam/ai-usage-strip",
   "icons": {

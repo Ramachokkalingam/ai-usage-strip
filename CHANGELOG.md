@@ -12,3 +12,4 @@ First release.
 - Settings for plans, limits, window types, context size, placement, size and colors.
 - Detects "you've reached your limit" notices.
 - Works in Chromium browsers and Firefox 121+ from one codebase.
+- Privacy policy and store listing package.

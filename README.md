@@ -85,7 +85,7 @@ Only Claude shares usage with the signed-in page. For the other sites the extens
 - **Fits the site.** Matches light and dark themes, attaches to the chat box, and trims itself on narrow screens, dropping the least important parts first. If a layout gets in the way it floats instead.
 - **Stays out of the way.** Lives in a shadow root, so it can't break the site's styles and the site can't break it. Keyboard accessible, respects reduced motion.
 - **Adjustable.** Turn each part on or off, choose full or compact size, set your plan, limit, window and context size per site.
-- **Private.** Everything stays in your browser. See [Privacy](#privacy).
+- **Private.** Everything stays in your browser. See [Privacy](#privacy) and the full [privacy policy](PRIVACY.md).
 - **Light.** Plain JavaScript with no dependencies; a 45 KB download.
 
 ## Privacy

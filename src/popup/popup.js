@@ -121,6 +121,12 @@
     window.close();
   });
 
+  $('starLink').addEventListener('click', (e) => {
+    e.preventDefault();
+    api.tabs.create({ url: e.currentTarget.href });
+    window.close();
+  });
+
   $('openOptions').addEventListener('click', () => {
     api.runtime.openOptionsPage();
     window.close();

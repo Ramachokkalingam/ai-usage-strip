@@ -33,4 +33,9 @@ body { width: 360px; font-size: 13px; }
 .site.idle .head { margin-bottom: 0; }
 .site.off .head { opacity: 0.55; }
 
-.bottom { display: flex; justify-content: space-between; gap: 8px; padding: 10px 16px 14px; border-top: 1px solid var(--line); }
+.bottom { display: flex; justify-content: space-between; gap: 8px; padding: 10px 16px 10px; border-top: 1px solid var(--line); }
+
+.star { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; margin: 0; padding: 0 16px 14px; font-size: 12px; color: var(--muted); }
+.star a { display: inline-flex; align-items: center; gap: 5px; color: var(--accent); font-weight: 600; text-decoration: none; border-radius: 4px; }
+.star a:hover { text-decoration: underline; }
+.star svg { width: 14px; height: 14px; }

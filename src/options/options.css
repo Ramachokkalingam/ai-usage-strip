@@ -63,7 +63,8 @@ input[type="number"] { font-variant-numeric: tabular-nums; }
 select:focus-visible, input[type="number"]:focus-visible { outline: 2px solid var(--focus); outline-offset: 0; border-color: transparent; }
 
 .actions { display: flex; flex-wrap: wrap; gap: 10px; }
-.foot { padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+.foot { display: grid; gap: 4px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+.foot a { color: var(--accent); font-weight: 600; }
 
 @media (max-width: 560px) {
   .page { padding: 28px 16px 48px; }
