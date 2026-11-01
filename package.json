@@ -7,8 +7,34 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "check": "node scripts/check.mjs",
     "build": "node scripts/build.mjs",
     "build:chromium": "node scripts/build.mjs chromium",
     "build:firefox": "node scripts/build.mjs firefox"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ramachokkalingam/ai-usage-strip.git"
+  },
+  "homepage": "https://github.com/Ramachokkalingam/ai-usage-strip#readme",
+  "bugs": {
+    "url": "https://github.com/Ramachokkalingam/ai-usage-strip/issues"
+  },
+  "keywords": [
+    "browser-extension",
+    "chrome-extension",
+    "firefox-addon",
+    "claude",
+    "chatgpt",
+    "gemini",
+    "perplexity",
+    "grok",
+    "deepseek",
+    "usage-tracker",
+    "rate-limit",
+    "llm"
+  ],
+  "engines": {
+    "node": ">=18"
   }
 }

@@ -1,0 +1,22 @@
+name: Support a new AI site
+description: Ask for, or offer to add, another AI chat site.
+labels: ["new site", "enhancement"]
+body:
+  - type: input
+    id: site
+    attributes:
+      label: Site name and URL
+      placeholder: Mistral Le Chat, https://chat.mistral.ai
+    validations:
+      required: true
+  - type: textarea
+    id: limits
+    attributes:
+      label: Its usage limits
+      description: What caps does each plan have, and how do they reset? Link a source if you can.
+  - type: checkboxes
+    id: help
+    attributes:
+      label: Can you help?
+      options:
+        - label: I'd like to open the pull request myself (see CONTRIBUTING.md, Adding a site)

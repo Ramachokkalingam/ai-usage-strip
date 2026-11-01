@@ -1,0 +1,44 @@
+name: Strip missing or wrong on a site
+description: The strip doesn't appear, sits in the wrong place, or shows wrong numbers on a site.
+labels: ["site broken"]
+body:
+  - type: dropdown
+    id: site
+    attributes:
+      label: Site
+      options: [Claude, ChatGPT, Gemini, Perplexity, Grok, DeepSeek]
+    validations:
+      required: true
+  - type: dropdown
+    id: problem
+    attributes:
+      label: What's wrong
+      options:
+        - The strip doesn't appear
+        - The strip is in the wrong place or overlaps something
+        - Sent messages aren't counted, or are counted twice
+        - The plan limit or reset time looks wrong
+        - The context size looks wrong
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: What did you expect, and what happened instead? A screenshot helps a lot.
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and version
+      placeholder: Chrome 142, Firefox 145, Edge 142
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Extension version
+      description: Shown at the bottom of the settings page.
+      placeholder: v1.0.0
