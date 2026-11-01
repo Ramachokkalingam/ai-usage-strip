@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Usage Strip settings</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="top">
+        <img src="../icons/icon-48.png" alt="" width="36" height="36" />
+        <div>
+          <h1>AI Usage Strip</h1>
+          <p class="lede">Your plan limit, reset time, context size and message count, right above the chat box.</p>
+        </div>
+        <p class="saved" id="saved" role="status" aria-live="polite"></p>
+      </header>
+
+      <section class="welcome" id="welcome" hidden>
+        <h2>Pick your plan for each site</h2>
+        <p>Claude reports real usage, so it works right away. The other sites don't share their limits, so the strip counts the messages you send and compares them to the plan you choose below.</p>
+        <div class="welcome-actions" id="grantWrap" hidden>
+          <p>Your browser needs your OK before the strip can appear on these sites.</p>
+          <button type="button" class="btn primary" id="grantBtn">Allow access to AI sites</button>
+        </div>
+      </section>
+
+      <section class="block" aria-labelledby="h-strip">
+        <h2 id="h-strip">Strip</h2>
+
+        <div class="field inline">
+          <label class="switch">
+            <input type="checkbox" data-g="showStrip" />
+            <span class="track" aria-hidden="true"><span class="knob"></span></span>
+            <span class="switch-label">Show the strip above the chat box</span>
+          </label>
+        </div>
+
+        <fieldset class="field">
+          <legend>What to show</legend>
+          <div class="checks">
+            <label><input type="checkbox" data-sec="plan" /> Plan limit</label>
+            <label><input type="checkbox" data-sec="reset" /> Reset timer</label>
+            <label><input type="checkbox" data-sec="context" /> Context fill</label>
+            <label><input type="checkbox" data-sec="messages" /> Message count</label>
+          </div>
+        </fieldset>
+
+        <fieldset class="field">
+          <legend>Placement</legend>
+          <div class="seg-control">
+            <label><input type="radio" name="placement" value="auto" /><span>Automatic</span></label>
+            <label><input type="radio" name="placement" value="inline" /><span>Attached to the chat box</span></label>
+            <label><input type="radio" name="placement" value="floating" /><span>Floating</span></label>
+          </div>
+          <p class="hint">Automatic attaches the strip to the chat box and switches to floating if a site's layout gets in the way.</p>
+        </fieldset>
+
+        <div class="pair">
+          <fieldset class="field">
+            <legend>Size</legend>
+            <div class="seg-control">
+              <label><input type="radio" name="density" value="full" /><span>Full</span></label>
+              <label><input type="radio" name="density" value="compact" /><span>Compact</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="field">
+            <legend>Colors</legend>
+            <div class="seg-control">
+              <label><input type="radio" name="theme" value="auto" /><span>Match the site</span></label>
+              <label><input type="radio" name="theme" value="light" /><span>Light</span></label>
+              <label><input type="radio" name="theme" value="dark" /><span>Dark</span></label>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="field inline">
+          <label class="switch">
+            <input type="checkbox" data-g="badge" />
+            <span class="track" aria-hidden="true"><span class="knob"></span></span>
+            <span class="switch-label">Show the plan percentage on the toolbar icon</span>
+          </label>
+        </div>
+      </section>
+
+      <section class="block" aria-labelledby="h-sites">
+        <h2 id="h-sites">Sites and plans</h2>
+        <p class="hint wide">Plan numbers are starting points. Providers change their caps often, so edit the limit if yours differs. Set the limit to 0 when your plan has no cap.</p>
+        <p class="hint wide">A rolling window counts each message for the window length. A session starts with your first message and resets in full when it ends. Daily resets once a day at the time you pick.</p>
+        <div id="sites"></div>
+      </section>
+
+      <section class="block" aria-labelledby="h-data">
+        <h2 id="h-data">Your data</h2>
+        <p class="hint wide">Message times stay in this browser. Nothing is sent anywhere. The strip only reads usage from claude.ai using your own signed-in session.</p>
+        <div class="actions">
+          <button type="button" class="btn" id="export">Export as JSON</button>
+          <button type="button" class="btn danger" id="clear">Clear message history</button>
+        </div>
+      </section>
+
+      <footer class="foot">
+        <span>AI Usage Strip <span id="version"></span>, by Ramachokkalingam</span>
+      </footer>
+    </main>
+
+    <template id="siteTpl">
+      <article class="site">
+        <header class="site-head">
+          <span class="dot"></span>
+          <h3></h3>
+          <a class="open" target="_blank" rel="noopener">Open</a>
+          <label class="switch">
+            <input type="checkbox" data-k="enabled" />
+            <span class="track" aria-hidden="true"><span class="knob"></span></span>
+            <span class="switch-label">Track</span>
+          </label>
+        </header>
+        <div class="live-row" hidden>
+          <label class="check"><input type="checkbox" data-k="useLive" /> Use live usage from claude.ai</label>
+          <p class="hint">Reads the same numbers as Settings, Usage on claude.ai. The plan below is only used if that fails.</p>
+        </div>
+        <div class="grid">
+          <label class="f">
+            <span>Plan</span>
+            <select data-k="preset"></select>
+          </label>
+          <label class="f">
+            <span>Message limit</span>
+            <input type="number" min="0" step="1" inputmode="numeric" data-k="limit" />
+          </label>
+          <label class="f">
+            <span>Window</span>
+            <select data-k="windowType">
+              <option value="rolling">Rolling</option>
+              <option value="session">Session</option>
+              <option value="daily">Daily</option>
+            </select>
+          </label>
+          <label class="f" data-show="hours">
+            <span>Window length (hours)</span>
+            <input type="number" min="0.25" max="168" step="0.25" data-k="windowHours" />
+          </label>
+          <label class="f" data-show="daily">
+            <span>Daily reset time</span>
+            <select data-k="resetHour"></select>
+          </label>
+          <label class="f">
+            <span>Context window (tokens)</span>
+            <input type="number" min="1000" step="1000" inputmode="numeric" data-k="contextTokens" />
+          </label>
+        </div>
+      </article>
+    </template>
+
+    <script src="../shared/core.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "ai-usage-strip",
+  "version": "1.0.0",
+  "description": "Browser extension that shows your AI plan limit, reset timer, context fill and message count above the chat box.",
+  "author": "Ramachokkalingam",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "build:chromium": "node scripts/build.mjs chromium",
+    "build:firefox": "node scripts/build.mjs firefox"
+  }
+}

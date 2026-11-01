@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Usage Strip</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="top">
+      <img src="../icons/icon-32.png" alt="" width="20" height="20" />
+      <h1>AI usage</h1>
+      <label class="switch" title="Show the strip above the chat box on supported sites">
+        <input type="checkbox" id="showStrip" />
+        <span class="track" aria-hidden="true"><span class="knob"></span></span>
+        <span class="switch-label">Strip</span>
+      </label>
+    </header>
+
+    <div class="grant" id="grant" hidden>
+      <p>Allow access to the AI sites so the strip can appear on them.</p>
+      <button type="button" class="btn primary" id="grantBtn">Allow access</button>
+    </div>
+
+    <ul class="sites" id="sites" aria-live="polite"></ul>
+
+    <footer class="bottom">
+      <button type="button" class="btn" id="openOptions">Settings</button>
+      <button type="button" class="btn ghost" id="refresh" title="Re-read live usage from open claude.ai tabs">Refresh Claude</button>
+    </footer>
+
+    <script src="../shared/core.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>
